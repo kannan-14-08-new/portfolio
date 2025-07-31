@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+ body{
+  width: auto;
+  background: #161513;
+  color: white;
+  font-family: "Poppins";
+ }
+
+ html{
+  scroll-behavior: smooth;
+ }
+ 
+ ::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #a020f0, #ff0080, #ff8c00);
+  border-radius: 10px;
+}
+
+
+@media(max-width: 768px){
+
+  .nav-connect{
+    display: none;
+  }
+
+  .nav-image{
+    display: none;
+  }
+
+  .contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact p{
+    width: 300px;
+  }
+
+  .contact form{
+    width: 300px;
+  }
+
+  .contact textarea{
+    width: 300px;
+  }
+
+  .contact input{
+    width: 300px;
+  }
+
+ 
+  .hero p{
+    width: 300px;
+  }
+
+  .hero-buttons{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about .par{
+    font-size: 20px;
+  }
+   
+  .about .about-skill .skill{
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+  }
+
+  .about .about-skill .skill hr{
+    width: 80%;
+  }
+
+   .exp{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .exp hr{
+    height: 5px;
+  }
+
+  .services{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+
+  .my-work{
+    width: 300px;
+  }
+
+   .footer{
+    display: flex;
+    flex-direction: column;
+    gap: 25px; 
+  }
+
+   .footer-input{
+    display: flex;
+    flex-direction: column;
+   }
+
+   .footer-p{
+     width: 300px;
+     margin-top: 10px;
+   }
+  
+   .footer-bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+   }
+
+   .email-input{
+    width: 250px;
+   }
+}
+
+    

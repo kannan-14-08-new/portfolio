@@ -1,0 +1,84 @@
+            ⦁	Portfolio Website
+
+            Using Components
+
+            ⦁	AnchorLink use for Smooth scrolling
+
+             <AnchorLink offset={80} href="#about">
+
+               <p onClick={() => setMenu("about")}>About Me</p>
+
+             </AnchorLink>
+
+            ⦁	Form Handling
+
+            Web3Form Enter the Gmail to get the Public code
+            It as use to receive the form information in the Gmail
+
+
+            ⦁	Smooth scroll Animation
+             
+            AOS
+
+            npm install aos --save
+
+            import AOS from 'aos';
+
+             useEffect(() => {
+                AOS.init({
+                  duration: 1000, // Animation duration
+                  once: true,     // Whether animation should happen only once
+                });
+              }, []);
+
+
+            | Animation   | Attribute                |
+            | ----------- | ------------------------ |
+            | Fade Up     | `data-aos="fade-up"`     |
+            | Fade Down   | `data-aos="fade-down"`   |
+            | Zoom In     | `data-aos="zoom-in"`     |
+            | Flip Left   | `data-aos="flip-left"`   |
+            | Slide Right | `data-aos="slide-right"` |
+
+            <div data-aos="fade-up" data-aos-duration="2000">
+              This will fade up in 2 seconds
+            </div> - Custom duration in AOS
+
+
+            ⦁	Scroll Bar Color Changing
+
+             ::-webkit-scrollbar {
+              width: 10px;
+            }
+
+            ::-webkit-scrollbar-track {
+              background: #1a1a1a;
+            }
+
+            ::-webkit-scrollbar-thumb {
+              background: linear-gradient(to bottom, #a020f0, #ff0080, #ff8c00);
+              border-radius: 10px;
+            }
+
+            ⦁	Deploy the code in step by step
+
+            npm install gh-pages --save-dev
+
+            In package.json add the
+
+            "homepage": "https://yourusername.github.io/repo-name"
+
+            "scripts": {
+              "predeploy": "npm run build",
+              "deploy": "gh-pages -d build"
+            }
+
+            git init
+            git remote add origin https://github.com/yourusername/repo-name.git
+            git add .
+            git commit -m "Initial commit"
+            git push -u origin main
+
+            npm run deploy or npm run build
+
+            now visit your site "https://yourusername.github.io/repo-name"
