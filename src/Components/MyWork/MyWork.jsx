@@ -17,9 +17,11 @@ const MyWork = () => {
      <div className="flex flex-wrap justify-center gap-[50px] mt-[30px] my-work">
        {
         mywork_data.map((work, index) => (
+          <a href={work.href} target="_blank">
           <img key={index} src={work.w_img} className=" transition-all duration-300 cursor-pointer
-          hover:scale-[1.08]  hover:border-[#ff00ff] border-4 rounded-[20px] "/> 
+          hover:scale-[1.08] hover:border-[#ff00ff] border-4 rounded-[20px] w-[600px] h-[300px]"/></a>
         ))
+        
        }
      </div>
 

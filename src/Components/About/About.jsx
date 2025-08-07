@@ -32,6 +32,8 @@ const About = () => {
             <div className={`${skillStyle} skill`}><p className={`${skillStyleP}`}>HTML & CSS</p> <hr className= {`${skillStylePer} w-[70%]`} /></div>
             <div className={`${skillStyle} skill`}><p className={`${skillStyleP}`}>Javascript Basic & Advance</p> <hr className= {`${skillStylePer} w-[50%]`} /></div>
             <div className={`${skillStyle} skill`}><p className={`${skillStyleP}`}>React JS and Tailwind</p> <hr className= {`${skillStylePer} w-[45%]`} /></div>
+            <div className={`${skillStyle} skill`}><p className={`${skillStyleP}`}>Next Js and TypeScript</p> <hr className= {`${skillStylePer} w-[80%]`} /></div>
+
           </div>
         </div>
       </div>
