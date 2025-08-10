@@ -1,18 +1,29 @@
 import { useState } from "react";
-import logo from "../../assets/theme_pattern.svg"
-import underline from "../../assets/nav_underline.svg"
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-import menu_open from "../../assets/menu_open.svg"
-import menu_close from "../../assets/menu_close.svg"
+import logo from "../../assets/theme_pattern.svg";
+import underline from "../../assets/nav_underline.svg";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import menu_open from "../../assets/menu_open.svg";
+import menu_close from "../../assets/menu_close.svg";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("home");
   const [openMenu, setOpenMenu] = useState(false);
 
+  const navLinks = [
+    { id: "home", label: "Home", offset: 0 },
+    { id: "about", label: "About Me", offset: 80 },
+    { id: "services", label: "Services", offset: 50 },
+    { id: "work", label: "Portfolio", offset: 50 },
+    { id: "contact", label: "Contact", offset: 100 },
+  ];
+
   return (
-    <div className="navbar flex items-center justify-between mx-9 mt-4">
-      <p className="text-2xl font-bold relative">Kannan</p>
-      <img src={logo} className="absolute w-[100px] z-[-1]" />
+    <div className="navbar flex items-center justify-between px-6 md:px-12 py-4 relative">
+      {/* Logo */}
+      <div className="relative z-50 flex items-center gap-2">
+        <p className="text-2xl font-bold">Kannan</p>
+        <img src={logo} className="absolute w-[100px] -z-10 left-0 top-0" />
+      </div>
 
       {/* Mobile Menu Button */}
       <img
@@ -21,89 +32,64 @@ const Navbar = () => {
         onClick={() => setOpenMenu(!openMenu)}
       />
 
-      {/* Desktop Navbar */}
-      <ul className="hidden md:flex items-center gap-[60px] text-[20px]">
-        <li className="cursor-pointer flex flex-col gap-[5px]">
-          <AnchorLink href="#home">
-            <p onClick={() => setMenu("home")}>Home</p>
-          </AnchorLink>
-          {menu === 'home' && <img src={underline} className="m-auto nav-image" />}
-        </li>
-        <li className="cursor-pointer flex flex-col gap-[5px]">
-          <AnchorLink offset={80} href="#about">
-            <p onClick={() => setMenu("about")}>About Me</p>
-          </AnchorLink>
-          {menu === 'about' && <img src={underline} className="m-auto nav-image" />}
-        </li>
-        <li className="cursor-pointer flex flex-col gap-[5px]">
-          <AnchorLink offset={50} href="#services">
-            <p onClick={() => setMenu("services")}>Services</p>
-          </AnchorLink>
-          {menu === 'services' && <img src={underline} className="m-auto nav-image" />}
-        </li>
-        <li className="cursor-pointer flex flex-col gap-[5px]">
-          <AnchorLink offset={50} href="#work">
-            <p onClick={() => setMenu("work")}>Portfolio</p>
-          </AnchorLink>
-          {menu === 'work' && <img src={underline} className="m-auto nav-image" />}
-        </li>
-        <li className="cursor-pointer flex flex-col gap-[5px]">
-          <AnchorLink offset={100} href="#contact">
-            <p onClick={() => setMenu("contact")}>Contact</p>
-          </AnchorLink>
-          {menu === 'contact' && <img src={underline} className="m-auto nav-image" />}
-        </li>
+      {/* Desktop / Tablet Navbar */}
+      <ul className="hidden md:flex items-center gap-10 lg:gap-[60px] text-lg">
+        {navLinks.map((link) => (
+          <li key={link.id} className="cursor-pointer flex flex-col gap-1">
+            <AnchorLink offset={link.offset} href={`#${link.id}`}>
+              <p onClick={() => setMenu(link.id)}>{link.label}</p>
+            </AnchorLink>
+            {menu === link.id && (
+              <img src={underline} className="m-auto nav-image" />
+            )}
+          </li>
+        ))}
       </ul>
 
-      {/* Connect Button */}
-      <div
-        className="nav-connect contact-with px-2 py-2 font-bold rounded-[50px]
-       bg-gradient-to-r from-pink-500 via-orange-400 to-yellow-600
-       cursor-pointer hover:scale-105 transition- flex flex-col gap-[5px] transform duration-300"
-      >
-        <AnchorLink offset={100} href="#contact">Connect With Me</AnchorLink>
+      {/* Connect Button (Desktop/Tablet) */}
+      <div className="hidden md:block font-bold px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 via-orange-400 to-yellow-600 cursor-pointer hover:scale-105 transition-transform duration-300">
+        <AnchorLink offset={100} href="#contact">
+          Connect With Me
+        </AnchorLink>
       </div>
 
       {/* Mobile Side Menu */}
       <div
-        className={`fixed top-0 right-0 h-20% w-[50%] text-center bg-[linear-gradient(270deg,_#DF8908_10%,_#B415FF_100%)] z-40 p-8 transition-transform duration-300 rounded-[10px] font-bold  md:hidden ${
-          openMenu ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed top-0 right-0 h-screen w-[70%] sm:w-[50%] text-center shadow-lg bg-gradient-to-b from-orange-400 to-purple-600 z-40 p-8 transition-transform duration-300 ease-in-out rounded-l-xl ${
+          openMenu ? "translate-x-0" : "translate-x-full"
         }`}
       >
-
         {/* Mobile Menu List */}
-        <ul className="flex flex-col gap-[40px] text-[20px] mt-10">
-          <li className="cursor-pointer flex flex-col gap-[5px]">
-            <AnchorLink href="#home">
-              <p onClick={() => { setMenu("home"); setOpenMenu(false); }}>Home</p>
-            </AnchorLink>
-            {menu === 'home' && <img src={underline} className="m-auto nav-image" />}
-          </li>
-          <li className="cursor-pointer flex flex-col gap-[5px]">
-            <AnchorLink offset={80} href="#about">
-              <p onClick={() => { setMenu("about"); setOpenMenu(false); }}>About Me</p>
-            </AnchorLink>
-            {menu === 'about' && <img src={underline} className="m-auto nav-image" />}
-          </li>
-          <li className="cursor-pointer flex flex-col gap-[5px]">
-            <AnchorLink offset={50} href="#services">
-              <p onClick={() => { setMenu("services"); setOpenMenu(false); }}>Services</p>
-            </AnchorLink>
-            {menu === 'services' && <img src={underline} className="m-auto nav-image" />}
-          </li>
-          <li className="cursor-pointer flex flex-col gap-[5px]">
-            <AnchorLink offset={50} href="#work">
-              <p onClick={() => { setMenu("work"); setOpenMenu(false); }}>Portfolio</p>
-            </AnchorLink>
-            {menu === 'work' && <img src={underline} className="m-auto nav-image" />}
-          </li>
-          <li className="cursor-pointer flex flex-col gap-[5px]">
-            <AnchorLink offset={100} href="#contact">
-              <p onClick={() => { setMenu("contact"); setOpenMenu(false); }}>Contact</p>
-            </AnchorLink>
-            {menu === 'contact' && <img src={underline} className="m-auto nav-image" />}
-          </li>
+        <ul className="flex flex-col gap-8 text-lg mt-12">
+          {navLinks.map((link) => (
+            <li key={link.id} className="cursor-pointer flex flex-col gap-1">
+              <AnchorLink
+                offset={link.offset}
+                href={`#${link.id}`}
+                onClick={() => {
+                  setMenu(link.id);
+                  setOpenMenu(false);
+                }}
+              >
+                <p>{link.label}</p>
+              </AnchorLink>
+              {menu === link.id && (
+                <img src={underline} className="m-auto nav-image" />
+              )}
+            </li>
+          ))}
         </ul>
+
+        {/* Connect Button (Mobile) */}
+        <div className="mt-8 font-bold px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 via-orange-400 to-yellow-600 cursor-pointer hover:scale-105 transition-transform duration-300">
+          <AnchorLink
+            offset={100}
+            href="#contact"
+            onClick={() => setOpenMenu(false)}
+          >
+            Connect With Me
+          </AnchorLink>
+        </div>
       </div>
     </div>
   );
